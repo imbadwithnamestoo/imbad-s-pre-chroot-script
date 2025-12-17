@@ -1,6 +1,4 @@
 #!/bin/bash
-# Arch pre-chroot setup script with interactive options
-# WARNING: This will erase the selected disk!
 
 set -e
 
@@ -33,7 +31,6 @@ wipefs -a $DISK
 echo "Creating EFI partition..."
 sgdisk -n 1:0:$EFI_SIZE -t 1:ef00 -c 1:$EFI_LABEL $DISK
 
-# Only create swap if user wants it
 if [[ "$USE_SWAP" =~ ^[Yy]$ ]]; then
     echo "Creating Swap partition..."
     sgdisk -n 2:0:+$SWAP_SIZE -t 2:8200 -c 2:$SWAP_LABEL $DISK
@@ -43,7 +40,7 @@ else
 fi
 
 echo "Creating Root partition (rest of disk)..."
-sgdisk -n $ROOT_PART_NUM:0:0 -t 3:8300 -c $ROOT_LABEL $DISK
+sgdisk -n $ROOT_PART_NUM:0:0 -t $ROOT_PART_NUM:8300 -c $ROOT_PART_NUM:$ROOT_LABEL $DISK
 
 sgdisk -p $DISK
 
