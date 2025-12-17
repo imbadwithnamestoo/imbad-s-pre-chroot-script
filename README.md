@@ -1,5 +1,4 @@
 # Pre-chroot Arch Script
-Arch script
 To install and run the script:
 `curl -o script.sh https://raw.githubusercontent.com/imbadwithnamestoo/imbad-s-pre-chroot-script/refs/heads/main/run.sh`
 To make the script executable: 
