@@ -47,7 +47,6 @@ sgdisk -p $DISK
 echo "Formatting EFI..."
 mkfs.fat -F32 ${DISK}1
 
-# Only format swap if created
 if [[ "$USE_SWAP" =~ ^[Yy]$ ]]; then
     echo "Formatting Swap..."
     mkswap ${DISK}2
@@ -71,7 +70,6 @@ if [[ "$INSTALL_TYPE" == "minimal" ]]; then
 else
     BASE_PKGS="base linux linux-firmware base-devel networkmanager grub efibootmgr nano"
     
-    # Only ask these if full system is chosen
     read -rp "Install Nvidia drivers? (y/n): " INSTALL_NVIDIA
     if [[ "$INSTALL_NVIDIA" =~ ^[Yy]$ ]]; then
         BASE_PKGS+=" nvidia nvidia-utils"
