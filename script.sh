@@ -79,7 +79,7 @@ else
     if [[ "$DISPLAY_SERVER" == "xorg" ]]; then
         BASE_PKGS+=" xorg xorg-xinit"
     elif [[ "$DISPLAY_SERVER" == "wayland" ]]; then
-        BASE_PKGS+=" wayland wayland-protocols"
+        BASE_PKGS+=" wayland wayland-protocols xorg-xwayland"
     fi
 fi
 
